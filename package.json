@@ -1,6 +1,6 @@
 {
   "name": "@victorhalla/n8n-nodes-wwebjsapi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "n8n community node for WWebJS API (WhatsApp Web JS wrapper)",
   "keywords": [
     "n8n-community-node-package",
@@ -23,7 +23,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run generate && npx tsc",
+    "build": "npm run generate && npx tsc && npm run copy-assets",
+    "copy-assets": "cp nodes/WWebjsApi/wwebjs.svg dist/nodes/WWebjsApi/wwebjs.svg",
     "generate": "node scripts/generate-from-swagger.js",
     "compile": "npx tsc",
     "dev": "npx tsc --watch",
@@ -31,8 +32,7 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "dist",
-    "nodes/WWebjsApi/wwebjs.svg"
+    "dist"
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
