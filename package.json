@@ -11,12 +11,12 @@
   "license": "MIT",
   "homepage": "https://github.com/avoylenko/wwebjs-api",
   "author": {
-    "name": "Victor",
-    "email": ""
+    "name": "Victor Halla",
+    "email": "victor.halla@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/n8n-nodes-wwebjsapi"
+    "url": "https://github.com/victor-halla/wwebjs-n8n"
   },
   "main": "index.js",
   "scripts": {
