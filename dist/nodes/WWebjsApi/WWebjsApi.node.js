@@ -1350,7 +1350,7 @@ class WWebjsApi {
                     required: false,
                     description: "The content of the message, can be a string or an object",
                     typeOptions: { rows: 2 },
-                    hint: "Enter as JSON",
+                    hint: "Text message, or JSON object for media/location/contact",
                     displayOptions: { show: { resource: ["Client"], operation: ["postClientSendMessage"] } },
                 },
                 {
@@ -4119,7 +4119,7 @@ class WWebjsApi {
                     required: false,
                     description: "The content of the message, can be a string or an object",
                     typeOptions: { rows: 2 },
-                    hint: "Enter as JSON",
+                    hint: "Text message, or JSON object for media/location/contact",
                     displayOptions: { show: { resource: ["Message"], operation: ["postMessageReply"] } },
                 },
                 {
@@ -4832,7 +4832,7 @@ class WWebjsApi {
                     required: false,
                     description: "The content of the message, can be a string or an object",
                     typeOptions: { rows: 2 },
-                    hint: "Enter as JSON",
+                    hint: "Text message, or JSON object for media/location/contact",
                     displayOptions: { show: { resource: ["ChannelChat"], operation: ["postChannelSendMessage"] } },
                 },
                 {
@@ -5539,11 +5539,11 @@ class WWebjsApi {
                                     body: {
                                         chatId: this.getNodeParameter("body_chatId", i),
                                         contentType: this.getNodeParameter("body_contentType", i),
-                                        content: (() => { try {
-                                            return JSON.parse(this.getNodeParameter("body_content", i));
+                                        content: (() => { const v = this.getNodeParameter("body_content", i); try {
+                                            return JSON.parse(v);
                                         }
                                         catch {
-                                            return {};
+                                            return v;
                                         } })(),
                                         options: (() => { try {
                                             return JSON.parse(this.getNodeParameter("body_options", i));
@@ -6560,11 +6560,11 @@ class WWebjsApi {
                                     body: {
                                         chatId: this.getNodeParameter("body_chatId", i),
                                         contentType: this.getNodeParameter("body_contentType", i),
-                                        content: (() => { try {
-                                            return JSON.parse(this.getNodeParameter("body_content", i));
+                                        content: (() => { const v = this.getNodeParameter("body_content", i); try {
+                                            return JSON.parse(v);
                                         }
                                         catch {
-                                            return {};
+                                            return v;
                                         } })(),
                                         options: (() => { try {
                                             return JSON.parse(this.getNodeParameter("body_options", i));
@@ -7852,11 +7852,11 @@ class WWebjsApi {
                                         chatId: this.getNodeParameter("body_chatId", i),
                                         messageId: this.getNodeParameter("body_messageId", i),
                                         contentType: this.getNodeParameter("body_contentType", i),
-                                        content: (() => { try {
-                                            return JSON.parse(this.getNodeParameter("body_content", i));
+                                        content: (() => { const v = this.getNodeParameter("body_content", i); try {
+                                            return JSON.parse(v);
                                         }
                                         catch {
-                                            return {};
+                                            return v;
                                         } })(),
                                         options: (() => { try {
                                             return JSON.parse(this.getNodeParameter("body_options", i));

@@ -1366,7 +1366,7 @@ export class WWebjsApi implements INodeType {
       required: false,
       description: "The content of the message, can be a string or an object",
       typeOptions: { rows: 2 },
-      hint: "Enter as JSON",
+      hint: "Text message, or JSON object for media/location/contact",
       displayOptions: { show: { resource: ["Client"], operation: ["postClientSendMessage"] } },
     },
     {
@@ -4135,7 +4135,7 @@ export class WWebjsApi implements INodeType {
       required: false,
       description: "The content of the message, can be a string or an object",
       typeOptions: { rows: 2 },
-      hint: "Enter as JSON",
+      hint: "Text message, or JSON object for media/location/contact",
       displayOptions: { show: { resource: ["Message"], operation: ["postMessageReply"] } },
     },
     {
@@ -4848,7 +4848,7 @@ export class WWebjsApi implements INodeType {
       required: false,
       description: "The content of the message, can be a string or an object",
       typeOptions: { rows: 2 },
-      hint: "Enter as JSON",
+      hint: "Text message, or JSON object for media/location/contact",
       displayOptions: { show: { resource: ["ChannelChat"], operation: ["postChannelSendMessage"] } },
     },
     {
@@ -5558,7 +5558,7 @@ export class WWebjsApi implements INodeType {
             body: {
             chatId: this.getNodeParameter("body_chatId", i) as string,
             contentType: this.getNodeParameter("body_contentType", i) as string,
-            content: (() => { try { return JSON.parse(this.getNodeParameter("body_content", i) as string); } catch { return {}; } })(),
+            content: (() => { const v = this.getNodeParameter("body_content", i) as string; try { return JSON.parse(v); } catch { return v; } })(),
             options: (() => { try { return JSON.parse(this.getNodeParameter("body_options", i) as string); } catch { return {}; } })(),
             },
             
@@ -6575,7 +6575,7 @@ export class WWebjsApi implements INodeType {
             body: {
             chatId: this.getNodeParameter("body_chatId", i) as string,
             contentType: this.getNodeParameter("body_contentType", i) as string,
-            content: (() => { try { return JSON.parse(this.getNodeParameter("body_content", i) as string); } catch { return {}; } })(),
+            content: (() => { const v = this.getNodeParameter("body_content", i) as string; try { return JSON.parse(v); } catch { return v; } })(),
             options: (() => { try { return JSON.parse(this.getNodeParameter("body_options", i) as string); } catch { return {}; } })(),
             },
             
@@ -7883,7 +7883,7 @@ export class WWebjsApi implements INodeType {
             chatId: this.getNodeParameter("body_chatId", i) as string,
             messageId: this.getNodeParameter("body_messageId", i) as string,
             contentType: this.getNodeParameter("body_contentType", i) as string,
-            content: (() => { try { return JSON.parse(this.getNodeParameter("body_content", i) as string); } catch { return {}; } })(),
+            content: (() => { const v = this.getNodeParameter("body_content", i) as string; try { return JSON.parse(v); } catch { return v; } })(),
             options: (() => { try { return JSON.parse(this.getNodeParameter("body_options", i) as string); } catch { return {}; } })(),
             },
             

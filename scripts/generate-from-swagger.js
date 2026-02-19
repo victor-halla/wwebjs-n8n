@@ -87,15 +87,19 @@ for (const [routePath, methods] of Object.entries(swagger.paths || {})) {
 
       bodyProps = Object.entries(props).map(([name, prop]) => {
         const isObjOrArray = prop.type === 'object' || prop.type === 'array';
+        // "can be a string or an object" → não forçar JSON.parse, aceitar string pura
+        const isStringOrObject = isObjOrArray &&
+          (prop.description || '').toLowerCase().includes('can be a string or an object');
         const detectedEnum = extractEnum(prop);
         return {
           name,
-          type:          prop.type || 'string',
+          type:            prop.type || 'string',
           isObjOrArray,
-          description:   prop.description || '',
-          example:       prop.example !== undefined ? prop.example : '',
-          required:      required.includes(name),
-          enum:          detectedEnum,
+          isStringOrObject, // aceita string OU objeto — não fazer JSON.parse automático
+          description:     prop.description || '',
+          example:         prop.example !== undefined ? prop.example : '',
+          required:        required.includes(name),
+          enum:            detectedEnum,
         };
       });
     }
@@ -191,7 +195,9 @@ function buildFieldsForOperation(op) {
 
     // Hint para campos JSON
     const jsonHint  = p.isObjOrArray && !hasEnum
-      ? `\n      typeOptions: { rows: 2 },\n      hint: "Enter as JSON",`
+      ? p.isStringOrObject
+        ? `\n      typeOptions: { rows: 2 },\n      hint: "Text message, or JSON object for media/location/contact",`
+        : `\n      typeOptions: { rows: 2 },\n      hint: "Enter as JSON",`
       : '';
 
     fields.push(`    {
@@ -248,8 +254,12 @@ function generateNodeCode() {
       const hasBody   = op.bodyProps.length > 0;
 
       const bodyLines = op.bodyProps.map(p => {
+        if (p.isStringOrObject && !(p.enum && p.enum.length)) {
+          // "string or object": tenta JSON.parse — se falhar, envia como string pura
+          return `            ${p.name}: (() => { const v = this.getNodeParameter(${s('body_' + p.name)}, i) as string; try { return JSON.parse(v); } catch { return v; } })(),`;
+        }
         if (p.isObjOrArray && !(p.enum && p.enum.length)) {
-          // Parse JSON string → object
+          // object/array puro: parse JSON obrigatório
           return `            ${p.name}: (() => { try { return JSON.parse(this.getNodeParameter(${s('body_' + p.name)}, i) as string); } catch { return {}; } })(),`;
         }
         const cast = p.type === 'boolean' ? 'boolean' : (p.type === 'number' || p.type === 'integer') ? 'number' : 'string';
