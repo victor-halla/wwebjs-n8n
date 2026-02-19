@@ -20,14 +20,11 @@ export class WWebjsApiCredentials implements ICredentialType {
       typeOptions: { password: true },
       default: "",
       required: true,
-      description: "Chave de API configurada no servidor WWebJS (variável API_KEY)",
+      description: "Chave de API (variável API_KEY no servidor WWebJS)",
     },
   ];
-
   authenticate = {
     type: "generic" as const,
-    properties: {
-      headers: { "x-api-key": "={{$credentials.apiKey}}" },
-    },
+    properties: { headers: { "x-api-key": "={{$credentials.apiKey}}" } },
   };
 }

@@ -1,12 +1,7 @@
 /**
- * ============================================================
- * WWebJS API - n8n Node
- * GERADO AUTOMATICAMENTE — não edite diretamente!
- *
+ * WWebJS API - n8n Node — GERADO AUTOMATICAMENTE
+ * Swagger: 1.0.0 | WWebJS API
  * Para regenerar: node scripts/generate-from-swagger.js
- * Swagger version: 1.0.0
- * API: WWebJS API
- * ============================================================
  */
 import { IExecuteFunctions, ILoadOptionsFunctions, INodeExecutionData, INodeListSearchResult, INodeType, INodeTypeDescription } from "n8n-workflow";
 export declare class WWebjsApi implements INodeType {

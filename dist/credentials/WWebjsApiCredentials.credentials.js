@@ -22,14 +22,12 @@ class WWebjsApiCredentials {
                 typeOptions: { password: true },
                 default: "",
                 required: true,
-                description: "Chave de API configurada no servidor WWebJS (variável API_KEY)",
+                description: "Chave de API (variável API_KEY no servidor WWebJS)",
             },
         ];
         this.authenticate = {
             type: "generic",
-            properties: {
-                headers: { "x-api-key": "={{$credentials.apiKey}}" },
-            },
+            properties: { headers: { "x-api-key": "={{$credentials.apiKey}}" } },
         };
     }
 }
