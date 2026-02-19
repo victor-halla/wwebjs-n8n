@@ -1,0 +1,1 @@
+{"version":3,"file":"WWebjsApi.node.d.ts","sourceRoot":"","sources":["../../../nodes/WWebjsApi/WWebjsApi.node.ts"],"names":[],"mappings":"AAAA;;;;;;;;;GASG;AAEH,OAAO,EACL,iBAAiB,EAEjB,kBAAkB,EAClB,SAAS,EACT,oBAAoB,EAErB,MAAM,cAAc,CAAC;AAEtB,qBAAa,SAAU,YAAW,SAAS;IACzC,WAAW,EAAE,oBAAoB,CAohI/B;IAEI,OAAO,CAAC,IAAI,EAAE,iBAAiB,GAAG,OAAO,CAAC,kBAAkB,EAAE,EAAE,CAAC;CAwkFxE"}

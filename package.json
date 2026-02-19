@@ -1,0 +1,51 @@
+{
+  "name": "n8n-nodes-wwebjsapi",
+  "version": "1.0.0",
+  "description": "n8n community node for WWebJS API (WhatsApp Web JS wrapper)",
+  "keywords": [
+    "n8n-community-node-package",
+    "whatsapp",
+    "wwebjs",
+    "automation"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/avoylenko/wwebjs-api",
+  "author": {
+    "name": "Victor",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/n8n-nodes-wwebjsapi"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run generate && npx tsc",
+    "generate": "node scripts/generate-from-swagger.js",
+    "compile": "npx tsc",
+    "dev": "npx tsc --watch",
+    "lint": "eslint nodes --ext .ts",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/WWebjsApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/WWebjsApi/WWebjsApi.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "n8n-workflow": "*"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "dependencies": {}
+}
