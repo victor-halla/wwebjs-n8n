@@ -12,7 +12,9 @@
 import {
   IExecuteFunctions,
   IHttpRequestOptions,
+  ILoadOptionsFunctions,
   INodeExecutionData,
+  INodeListSearchResult,
   INodeType,
   INodeTypeDescription,
   NodeOperationError,
@@ -274,84 +276,318 @@ export class WWebjsApi implements INodeType {
 
       // ── Campos das Operações ──────────────────────────────────
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["startSession"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["stopSession"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["getSessionStatus"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["getSessionQR"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["getSessionQRImage"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["restartSession"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["terminateSession"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["getPageScreenshot"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Session"], operation: ["requestPairingCode"] } },
     },
     {
@@ -373,21 +609,73 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Session"], operation: ["requestPairingCode"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getClassInfo"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["acceptInvite"] } },
     },
     {
@@ -400,12 +688,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["acceptInvite"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["archiveChat"] } },
     },
     {
@@ -418,12 +732,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["archiveChat"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["createGroup"] } },
     },
     {
@@ -445,30 +785,108 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["createGroup"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getChats"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getContacts"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getNumberId"] } },
     },
     {
@@ -481,12 +899,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["getNumberId"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["sendMessage"] } },
     },
     {
@@ -517,12 +961,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["sendMessage"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["sendMediaUrl"] } },
     },
     {
@@ -562,12 +1032,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["sendMediaUrl"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["setStatus"] } },
     },
     {
@@ -580,12 +1076,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["setStatus"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["isRegisteredUser"] } },
     },
     {
@@ -598,12 +1120,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["isRegisteredUser"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getChatById"] } },
     },
     {
@@ -616,12 +1164,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["getChatById"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Client"], operation: ["getContactById"] } },
     },
     {
@@ -634,12 +1208,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Client"], operation: ["getContactById"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Message"], operation: ["getMessages"] } },
     },
     {
@@ -661,12 +1261,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Message"], operation: ["getMessages"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Message"], operation: ["deleteMessage"] } },
     },
     {
@@ -697,12 +1323,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Message"], operation: ["deleteMessage"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Message"], operation: ["reactToMessage"] } },
     },
     {
@@ -733,12 +1385,38 @@ export class WWebjsApi implements INodeType {
       displayOptions: { show: { resource: ["Message"], operation: ["reactToMessage"] } },
     },
     {
-      displayName: "Session ID",
+      displayName: "Session",
       name: "sessionId",
-      type: "string",
-      default: "default",
+      type: "resourceLocator",
+      default: { mode: "id", value: "default" },
       required: true,
-      description: "Unique identifier for the session (alphanumeric and - allowed)",
+      description: "WhatsApp session to use",
+      modes: [
+        {
+          displayName: "From List",
+          name: "list",
+          type: "list",
+          typeOptions: {
+            searchListMethod: "getSessions",
+            searchable: false,
+          },
+        },
+        {
+          displayName: "By ID",
+          name: "id",
+          type: "string",
+          placeholder: "e.g. default",
+          validation: [
+            {
+              type: "regex",
+              properties: {
+                regex: "^[a-zA-Z0-9-]+$",
+                errorMessage: "Session ID must be alphanumeric (hyphens allowed)",
+              },
+            },
+          ],
+        },
+      ],
       displayOptions: { show: { resource: ["Message"], operation: ["starMessage"] } },
     },
     {
@@ -771,6 +1449,38 @@ export class WWebjsApi implements INodeType {
     ],
   };
 
+  // ── MELHORIA 1: loadOptions carrega sessões ativas da API ────
+  methods = {
+    listSearch: {
+      async getSessions(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
+        const credentials = await this.getCredentials("wWebjsApiCredentials");
+        const baseUrl = (credentials.baseUrl as string).replace(/\/$/, "");
+        const apiKey = credentials.apiKey as string;
+
+        const response = await this.helpers.httpRequest({
+          method: "GET",
+          url: `${baseUrl}/session/getSessions`,
+          headers: { "x-api-key": apiKey },
+          json: true,
+        }) as any;
+
+        // A API retorna { success: true, sessions: [...] }
+        const sessions: any[] = response?.sessions || response?.data || [];
+
+        if (!sessions.length) {
+          return { results: [{ name: "default", value: "default" }] };
+        }
+
+        return {
+          results: sessions.map((s: any) => ({
+            name: `${s.id || s.sessionId || s} (${s.status || "unknown"})`,
+            value: s.id || s.sessionId || s,
+          })),
+        };
+      },
+    },
+  };
+
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     const items = this.getInputData();
     const returnData: INodeExecutionData[] = [];
@@ -789,7 +1499,8 @@ export class WWebjsApi implements INodeType {
       case "Client": {
         switch (operation) {
         case "getClassInfo": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getClassInfo/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -804,7 +1515,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "acceptInvite": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/acceptInvite/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -821,7 +1533,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "archiveChat": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/archiveChat/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -838,7 +1551,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "createGroup": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/createGroup/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -856,7 +1570,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getChats": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getChats/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -871,7 +1586,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getContacts": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getContacts/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -886,7 +1602,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getNumberId": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getNumberId/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -903,7 +1620,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "sendMessage": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/sendMessage/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -922,7 +1640,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "sendMediaUrl": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/sendMediaUrl/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -942,7 +1661,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "setStatus": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/setStatus/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -959,7 +1679,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "isRegisteredUser": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/isRegisteredUser/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -976,7 +1697,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getChatById": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getChatById/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -993,7 +1715,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getContactById": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/client/getContactById/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -1017,7 +1740,8 @@ export class WWebjsApi implements INodeType {
       case "Message": {
         switch (operation) {
         case "getMessages": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/message/getMessages/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -1035,7 +1759,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "deleteMessage": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/message/deleteMessage/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -1054,7 +1779,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "reactToMessage": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/message/reactToMessage/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -1073,7 +1799,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "starMessage": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/message/starMessage/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",
@@ -1114,7 +1841,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "startSession": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/start/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1129,7 +1857,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "stopSession": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/stop/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1144,7 +1873,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getSessionStatus": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/status/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1159,7 +1889,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getSessionQR": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/qr/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1174,7 +1905,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getSessionQRImage": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/qr/${sessionId}/image`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1189,7 +1921,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "restartSession": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/restart/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1204,7 +1937,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "terminateSession": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/terminate/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1249,7 +1983,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "getPageScreenshot": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/getPageScreenshot/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "GET",
@@ -1264,7 +1999,8 @@ export class WWebjsApi implements INodeType {
           break;
         }
         case "requestPairingCode": {
-          const sessionId = this.getNodeParameter("sessionId", i) as string;
+          const sessionIdParam = this.getNodeParameter("sessionId", i) as { value: string };
+          const sessionId = sessionIdParam.value || "default";
           const endpoint = `/session/requestPairingCode/${sessionId}`;
           const options: IHttpRequestOptions = {
             method: "POST",

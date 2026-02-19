@@ -8,9 +8,14 @@
  * API: WWebJS API
  * ============================================================
  */
-import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from "n8n-workflow";
+import { IExecuteFunctions, ILoadOptionsFunctions, INodeExecutionData, INodeListSearchResult, INodeType, INodeTypeDescription } from "n8n-workflow";
 export declare class WWebjsApi implements INodeType {
     description: INodeTypeDescription;
+    methods: {
+        listSearch: {
+            getSessions(this: ILoadOptionsFunctions): Promise<INodeListSearchResult>;
+        };
+    };
     execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]>;
 }
 //# sourceMappingURL=WWebjsApi.node.d.ts.map
